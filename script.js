@@ -44,9 +44,58 @@ navLinks.forEach(link => {
 
 
 //Tocar a música
- const players = document.querySelectorAll('.track');
+ 
+  const players = document.querySelectorAll('.track');
+  const voltarBtn = document.querySelector('.botao.voltar');
+  const pauseBtn = document.querySelector('.botao.pause');
+  const pularBtn = document.querySelector('.botao.pular');
 
-  players.forEach(track => {
+  let currentTrackIndex = 0;
+
+  function formatTime(seconds) {
+    const min = Math.floor(seconds / 60) || 0;
+    const sec = Math.floor(seconds % 60) || 0;
+    return `${min}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  function stopAllExcept(indexToKeep) {
+    players.forEach((track, i) => {
+      const audio = track.querySelector('audio');
+      const icon = track.querySelector('button i');
+      if (i !== indexToKeep) {
+        audio.pause();
+        audio.currentTime = 0;
+        icon.classList.remove('bi-pause-fill');
+        icon.classList.add('bi-caret-right-fill');
+      }
+    });
+  }
+
+  function playTrack(index) {
+    const track = players[index];
+    const audio = track.querySelector('audio');
+    const icon = track.querySelector('button i');
+
+    stopAllExcept(index);
+
+    audio.play();
+    icon.classList.remove('bi-caret-right-fill');
+    icon.classList.add('bi-pause-fill');
+    currentTrackIndex = index;
+  }
+
+  function pauseTrack(index) {
+    const track = players[index];
+    const audio = track.querySelector('audio');
+    const icon = track.querySelector('button i');
+
+    audio.pause();
+    icon.classList.remove('bi-pause-fill');
+    icon.classList.add('bi-caret-right-fill');
+  }
+
+  // Setup de cada track
+  players.forEach((track, index) => {
     const audio = track.querySelector('audio');
     const button = track.querySelector('button');
     const icon = button.querySelector('i');
@@ -55,7 +104,6 @@ navLinks.forEach(link => {
     const currentTimeEl = track.querySelector('.current-time');
     const durationEl = track.querySelector('.duration');
 
-    // Atualiza o tempo
     audio.addEventListener('loadedmetadata', () => {
       durationEl.textContent = formatTime(audio.duration);
     });
@@ -66,50 +114,51 @@ navLinks.forEach(link => {
       progress.style.width = percent + '%';
     });
 
-    // Clique na barra para buscar
     progressBar.addEventListener('click', (e) => {
       const width = progressBar.clientWidth;
       const clickX = e.offsetX;
-      const duration = audio.duration;
-      audio.currentTime = (clickX / width) * duration;
+      audio.currentTime = (clickX / width) * audio.duration;
     });
 
-    // Clique no botão play/pause
     button.addEventListener('click', () => {
-      // Pausa todos os outros áudios
-      players.forEach(p => {
-        const otherAudio = p.querySelector('audio');
-        const otherIcon = p.querySelector('i');
-        if (otherAudio !== audio) {
-          otherAudio.pause();
-          otherAudio.currentTime = 0;
-          otherIcon.classList.remove('bi-pause-fill');
-          otherIcon.classList.add('bi-caret-right-fill');
-        }
-      });
-
-      // Toca ou pausa este áudio
       if (audio.paused) {
-        audio.play();
-        icon.classList.remove('bi-caret-right-fill');
-        icon.classList.add('bi-pause-fill');
+        playTrack(index);
       } else {
-        audio.pause();
-        icon.classList.remove('bi-pause-fill');
-        icon.classList.add('bi-caret-right-fill');
+        pauseTrack(index);
       }
     });
 
-    // Quando termina, reseta o botão
     audio.addEventListener('ended', () => {
       icon.classList.remove('bi-pause-fill');
       icon.classList.add('bi-caret-right-fill');
     });
-
   });
 
-  function formatTime(seconds) {
-    const min = Math.floor(seconds / 60) || 0;
-    const sec = Math.floor(seconds % 60) || 0;
-    return `${min}:${sec.toString().padStart(2, '0')}`;
-  }
+  // Botão de voltar
+  voltarBtn.addEventListener('click', () => {
+    currentTrackIndex = (currentTrackIndex - 1 + players.length) % players.length;
+    playTrack(currentTrackIndex);
+  });
+
+  // Botão de pular
+  pularBtn.addEventListener('click', () => {
+    currentTrackIndex = (currentTrackIndex + 1) % players.length;
+    playTrack(currentTrackIndex);
+  });
+
+  // Botão de pause/play principal
+  pauseBtn.addEventListener('click', () => {
+    const currentTrack = players[currentTrackIndex];
+    const audio = currentTrack.querySelector('audio');
+
+    if (audio.paused) {
+      playTrack(currentTrackIndex);
+      pauseBtn.querySelector('i').classList.remove('bi-play-fill');
+      pauseBtn.querySelector('i').classList.add('bi-pause-fill');
+    } else {
+      pauseTrack(currentTrackIndex);
+      pauseBtn.querySelector('i').classList.remove('bi-pause-fill');
+      pauseBtn.querySelector('i').classList.add('bi-play-fill');
+    }
+  });
+
