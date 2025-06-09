@@ -1,0 +1,129 @@
+.nova-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(190deg, #E92871, #D41E61);
+  padding: 12px 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 80px; /* garante altura fixa para cálculo do body */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  padding-top: 100px; /* espaço suficiente pra evitar sobreposição */
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background: white;
+  color: #D41E61;
+  font-weight: bold;
+}
+
+.nav-link.active i {
+  color: #D41E61;
+}
+
+.nav-link i {
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-link a{
+  text-decoration: none;
+  color: inherit; 
+}
+
+
+@media (max-width: 600px) {
+  .nova-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    justify-items: center;
+    align-items: center;
+    background: linear-gradient(90deg, #E92871, #D41E61); /* mesma cor do desktop */
+    border-radius: 16px;
+    padding: 16px 12px;
+    margin: 20px auto 0 auto;
+    width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
+
+  }
+
+  .logo {
+    display: none; /* Esconde o emoji "💖" no mobile para economizar espaço */
+  }
+
+  .nav-items {
+    display: contents; /* cada li vira uma célula do grid */
+  }
+
+  .nav-link {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .nav-link.active {
+    background: white;
+    color: #D41E61;
+    font-weight: bold;
+  }
+
+  .nav-link.active i {
+    color: #D41E61;
+  }
+
+  .nav-link i {
+    color: white;
+  }
+
+  body {
+    padding-top: 0;
+  }
+}
+
+

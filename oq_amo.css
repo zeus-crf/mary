@@ -1,0 +1,71 @@
+.oq-amo-section {
+  background: linear-gradient(to bottom, #E92871, #D41E61);
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url(Adobe\ Express\ -\ file\ \(1\).png);
+}
+
+.oq-amo-section h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.foto-central img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+}
+
+.listas-amor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  font-family: 'Great Vibes', cursive;
+}
+
+.lista {
+  list-style: decimal;
+  list-style-position: inside;
+  column-gap: 3rem;
+  text-align: left;
+  max-width: 700px;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 0 10px;
+  columns: 2;
+}
+
+.lista li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.titulo{
+  font-size: 3em;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 3px 3px 6px #f78fa0;
+  font-family: 'Pacifico', cursive;
+}
+
+@media (max-width: 768px) {
+  .lista{
+   list-style: decimal;
+  list-style-position: inside;
+  column-gap: 3rem;
+  text-align: left;
+  max-width: 300px;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 0 10px;
+  columns: 1;
+  text-align: center;
+  }
+}

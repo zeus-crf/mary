@@ -1,0 +1,178 @@
+.playlist {
+  max-width: 800px;
+  margin: auto;
+  background: #121212;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: sans-serif;
+  
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #1e1e1e;
+  border-radius: 8px;
+}
+.musicas{
+    padding-top: 2rem;
+    background-image: url(notas.png);
+}
+.track img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.artist {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 0.4rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.progress-container .current-time,
+.progress-container .duration {
+  font-size: 12px;
+  color: #aaa;
+  min-width: 32px;
+  text-align: center;
+}
+
+.progress-bar {
+  position: relative;
+  flex-grow: 1;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.progress-bar .progress {
+  position: absolute;
+  height: 100%;
+  background: #1DB954;
+  width: 0%;
+  border-radius: 3px;
+}
+
+.controls {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.play-pause {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-pause:focus {
+  outline: none;
+}
+
+.controls button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .controls button:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+  }
+
+  .controls button.playing {
+    background-color: #fa3c3c; /* vermelho durante reprodução */
+  }
+
+  .controls button i {
+    color: white;
+    font-size: 16px;
+  }
+
+  .list-music{
+    list-style: none;
+   
+  }
+
+  .titulo-music{
+    display: flex;
+    gap: 1rem;
+  }
+
+  .img-music{
+    width: 300px;
+    padding-bottom: 2rem;
+     border-radius: 8px;
+  }
+
+  .titulo-m{
+    font-size: 3em;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 3px 3px 6px #f78fa0;
+    font-family: 'Pacifico', cursive;
+    padding-bottom:2rem ;
+  }
+
+
+  @media (max-width:600px){
+    .playlist{
+        max-width: 80%;
+        
+    }
+
+    .img-music{
+    width: 200px;
+    
+    }
+  }
+
+  @media (max-width:470px){
+   
+    .img-music{
+    width: 180px;
+    
+    }
+
+    .titulo-music > h2{
+        font-size: 1.5rem;
+    }
+  }

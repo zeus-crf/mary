@@ -1,0 +1,65 @@
+.por_que{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-pq{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  background: #fdfaf4;
+  color: #3e3328;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3em;
+  line-height: 1.6;
+  border: 2px dashed #bfae9e;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  position: relative;
+  clip-path: polygon(
+    0% 5%, 5% 0%, 95% 0%, 100% 5%,
+    100% 95%, 95% 100%, 5% 100%, 0% 95%
+  );
+  background-image: repeating-linear-gradient(
+    135deg,
+    #fdfaf4,
+    #fdfaf4 10px,
+    #fbf7ef 10px,
+    #fbf7ef 20px
+  );
+}
+
+.img-pq{
+    width: 600px;
+    border-radius: 8px;
+}
+
+.texto-pq{
+    padding-bottom: 1rem;
+}
+
+
+@media (max-width: 680px){
+    .card{
+        width: 70%;
+        align-items: center;
+    }
+
+    .img-pq{
+        width: 90%;
+    }
+
+    .vd1{
+        width: 110%;
+    }
+
+    
+}

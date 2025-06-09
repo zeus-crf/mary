@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    
+    background: linear-gradient(100deg, #E92871, #AA0A42);
+    
+
+}
+
+html {
+  scroll-behavior:auto;
+}
